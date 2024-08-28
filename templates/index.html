@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>euphoria</title>
+    <link
+      rel="shortcut icon"
+      href="{% static 'image/Logo.svg' %}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=
+    Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;
+    900&family=Montserrat:ital,wght@0,100..900;1,100..900&family
+    =Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:
+    ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,
+    wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #spotlight .spotlight-slider .spotlight-card {
+        background-image: url("{% static 'image/bg-1.jpg' %}");
+      }
+      #productoffer .offercards .offercard-left {
+        background-image: url("{% static 'image/bg-2.jpg' %}");
+      }
+      #productoffer .offercards .offercard-right {
+        background-image: url("{% static 'image/bg-3.jpg' %}");
+      }
+      #advertisement .advertisement-content .advertisement-img1 {
+        background-image: url("{% static 'image/bg-4.jpg' %}");
+      }
+      #advertisement .advertisement-content .advertisement-img2 {
+        background-image: url("{% static 'image/bg-5.jpg' %}");
+      }
+    </style>
+  </head>
+  <body>
+    <!-- neavbar section  -->
+
+    <section id="navbar">
+      <div class="header">
+        <h1>
+          <a href="{% url 'web:index' %}"
+            ><img src="{% static 'image/Logo.svg' %}" alt="image"
+          /></a>
+        </h1>
+      </div>
+      <ul class="nav-menu">
+        <li><a class="navmenu-text" href="#">Shop</a></li>
+        <li><a class="navmenu-text" href="#">Men</a></li>
+        <li><a class="navmenu-text" href="#">Women</a></li>
+        <li class="combos"><a class="navmenu-text" href="#">Combos</a></li>
+        <li><a class="navmenu-text" href="#">Joggers</a></li>
+      </ul>
+      <div class="search-bar">
+        <img src="{% static 'image/search.svg' %}" alt="image" />
+        <form action="{% url 'web:search_products' %}" method="get">
+          <input
+            class="input"
+            type="text"
+            name="q"
+            placeholder="search"
+            value="{{ request.GET.q }}"
+          />
+        </form>
+      </div>
+      <div class="navbar-right">
+        <span><img src="{% static 'image/wishlist.svg' %}" alt="image" /></span>
+        <span><img src="{% static 'image/account.svg' %}" alt="image" /></span>
+        <span><img src="{% static 'image/cart.svg' %}" alt="image" /></span>
+      </div>
+      <div class="menubar" id="menubar">
+        <span class="shade-menubar"
+          ><img src="{% static 'image/svgexport-24.svg' %}" alt="image"
+        /></span>
+      </div>
+      <ul class="dropdown" id="dropdownMenu">
+        <li>
+          <img
+            class="close-icon"
+            id="closeIcon"
+            src="{% static 'image/svgexport-3.svg' %}"
+            alt="close icon"
+          />
+        </li>
+        <li class="drop-text">Shop</li>
+        <li><a class="drop-text" href="#">Men</a></li>
+        <li><a class="drop-text" href="#">Women</a></li>
+        <li><a class="drop-text" href="#">Combos</a></li>
+        <li><a class="drop-text" href="#">Joggers</a></li>
+      </ul>
+    </section>
+
+    {% block mymessage %}
+
+    <!-- spotlight section  -->
+
+    <section id="spotlight">
+      <button class="button-1">
+        <img src="{% static 'image/left-arrow-bold.svg' %}" alt="arrow" />
+      </button>
+      <button class="button-2">
+        <img src="{% static 'image/right-arrow-bold.svg' %}" alt="arrow" />
+      </button>
+      <div class="spotlight-slider">
+        <div class="spotlight-card">
+          <div class="spotlight-text">
+            <h6 class="spotlight-price">T-shirt / Tops</h6>
+            <h2 class="spotlight-title">Summer Value Pack</h2>
+            <h4 class="spotlight-off">cool / colorful / comfy</h4>
+            <button>Shop Now</button>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-text">
+            <h6 class="spotlight-price">T-shirt / Tops</h6>
+            <h2 class="spotlight-title">Summer Value Pack</h2>
+            <h4 class="spotlight-off">cool / colorful / comfy</h4>
+            <button>Shop Now</button>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-text">
+            <h6 class="spotlight-price">T-shirt / Tops</h6>
+            <h2 class="spotlight-title">Summer Value Pack</h2>
+            <h4 class="spotlight-off">cool / colorful / comfy</h4>
+            <button>Shop Now</button>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Progress Bar -->
+      <div class="carousel-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </section>
+
+    <!-- product offer section  -->
+
+    <section id="productoffer">
+      <div class="wrapper">
+        <div class="offercards">
+          <div class="offercard-left">
+            <div class="leftcard-text">
+              <h6 class="leftcard-price">Low Price</h6>
+              <h2 class="mid-textleft">High Coziness</h2>
+              <h4 class="leftcard-off">UPTO 50% OFF</h4>
+              <h6 class="leftcard-link"><a href="#">Explore Items</a></h6>
+            </div>
+          </div>
+          <div class="offercard-right">
+            <div class="rightcard-text">
+              <h6 class="rightcard-price">Beyoung Presents</h6>
+              <h2 class="mid-textright">Breezy Summer Style</h2>
+              <h4 class="rightcard-off">UPTO 50% OFF</h4>
+              <h6 class="rightcard-link"><a href="#">Explore Items</a></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- new arrivals section  -->
+    <section id="new-arrival">
+      <div class="wrapper">
+        <div class="arrival-head">
+          <span class="rectangle"></span>
+          <h2 class="arrivalhead-text">New Arrival</h2>
+        </div>
+        <div class="arrival-content">
+          <div class="arrival-arrow-img">
+            <img
+              class="arrow1 left-arrow"
+              src="{% static 'image/arrow-left.svg' %}"
+              alt="left arrow"
+            />
+          </div>
+          <div class="arrival-cards-container">
+            <div class="arrival-cards">
+              {% for category in categories %}
+              <div class="arrival-card-content">
+                <a href="{% url 'web:category_detail' category.id %}">
+                  <img
+                    class="arrival-image"
+                    src="{{ category.image.url }}"
+                    alt="{{ category.name }}"
+                  />
+                  <h6 class="image-text">{{ category.name }}</h6>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="arrival-arrow-img">
+            <img
+              class="arrow1 right-arrow"
+              src="{% static 'image/arrow-right.svg' %}"
+              alt="right arrow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- advertisement section  -->
+
+    <section id="advertisement">
+      <div class="wrapper">
+        <div class="advertisement-content">
+          <div class="advertisement-img1">
+            <h2 class="advertisement-card-subhead">
+              WE MADE YOUR EVERYDAY FASHION BETTER!
+            </h2>
+            <p class="adv-paragraph">
+              In our journey to improve everyday fashion, euphoria presents
+              EVERYDAY wear range - Comfortable & Affordable fashion 24/7
+            </p>
+            <button class="adv-button">Shop Now</button>
+          </div>
+          <div class="advertisement-img2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- category men section  -->
+
+    <section id="products">
+      <div class="wrapper">
+        <div class="products-head">
+          <span class="rectangle"></span>
+          <h2 class="products-head-text">Categories For Men</h2>
+        </div>
+        <div class="products-content">
+          {% for category in male_categories %}
+          <div class="products-card-content">
+            <a href="{% url 'web:category_detail' category.id %}">
+              <img
+                class="products-image"
+                src="{{category.image.url}}"
+                alt="image"
+              />
+              <div class="image-text-arrow">
+                <div class="image-text">
+                  <h6 class="image-text1">{{category.name}}</h6>
+                  <span><a class="explore" href="#">Explore Now!</a></span>
+                </div>
+                <div class="product-arrow">
+                  <img src="{% static 'image/arrow-right.svg' %}" alt="image" />
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- womens-category  -->
+
+    <section id="womens-products">
+      <div class="wrapper">
+        <div class="products-head">
+          <span class="rectangle"></span>
+          <h2 class="products-head-text">Categories For Women</h2>
+        </div>
+        <div class="products-content">
+          {% for category in female_categories %}
+          <div class="products-card-content">
+            <a href="{% url 'web:category_detail' category.id %}">
+              <img
+                class="products-image"
+                src="{{category.image.url}}"
+                alt="image"
+              />
+              <div class="image-text-arrow">
+                <div class="image-text">
+                  <h6 class="image-text1">{{category.name}}</h6>
+                  <span><a class="explore" href="#">Explore Now!</a></span>
+                </div>
+                <div class="product-arrow">
+                  <img src="{% static 'image/arrow-right.svg' %}" alt="image" />
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- brands -->
+
+    <section id="brands">
+      <div class="wrapper">
+        <div class="brand-card">
+          <div class="brandcard-content">
+            <h1 class="brand-head">Top Brands Deal</h1>
+            <p class="brand-subtext">
+              Up To <span style="color: #fbd103">60% </span>off on brands
+            </p>
+            <div class="brands-logos">
+              <div class="brand-image">
+                <img
+                  class="instagram"
+                  src="{% static 'image/nike.jpg' %}"
+                  alt="image"
+                />
+              </div>
+              <div class="brand-image">
+                <img
+                  class="h&m"
+                  src="{% static 'image/H&M.jpg' %}"
+                  alt="image"
+                />
+              </div>
+              <div class="brand-image">
+                <img
+                  class="levis"
+                  src="{% static 'image/levis.jpg' %}"
+                  alt="image"
+                />
+              </div>
+              <div class="brand-image">
+                <img
+                  class="uspa"
+                  src="{% static 'image/USPA.jpg' %}"
+                  alt="image"
+                />
+              </div>
+              <div class="brand-image">
+                <img
+                  class="puma"
+                  src="{% static 'image/puma.jpg' %}"
+                  alt="image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- lime-light -->
+
+    <section id="lime-light">
+      <div class="wrapper">
+        <div class="light-head">
+          <span class="rectangle"></span>
+          <h2 class="light-head-text">In The Limelight</h2>
+        </div>
+        <div class="light-content">
+          {% for product in products|slice:":4" %}
+
+          <div class="light-card-content">
+            <a href="{% url 'web:product_detail' product.id %}">
+              <div
+                class="light-image"
+                style="background-image: url('{{product.image.url}}')"
+              ></div>
+              <div class="image-text-arrow">
+                <div class="image-text">
+                  <h6 class="image-text1">{{product.name}}</h6>
+                  <span><a class="explore" href="#">{{product.brand}}</a></span>
+                </div>
+                <div class="rate">
+                  <h6 class="number">${{product.price}}</h6>
+                </div>
+              </div>
+            </a>
+            <div class="span">
+              <span class="image-whitespace">
+                <div class="wishlist">
+                  <img src="{% static 'image/wishlist.svg' %}" alt="image" />
+                </div>
+              </span>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- feedback -->
+
+    <section id="feedback">
+      <div class="wrapper">
+        <div class="feedback-head">
+          <span class="rectangle"></span>
+          <h2 class="feedback-head-text">Feedback</h2>
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-cards1">
+            <div class="feedback-image">
+              <div class="profile">
+                <img src="{% static 'image/span-1.svg' %}" alt="image" />
+              </div>
+              <div class="stars">
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star_half.png' %}" alt="image" />
+                <img src="{% static 'image/star_outline.png' %}" alt="image" />
+              </div>
+            </div>
+            <h4 class="name">Floyd Miles</h4>
+            <div>
+              <p class="comments">
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+              </p>
+              <p class="comments1">
+                Exercitation veniam consequat sunt nostrud amet. Amet minim
+                mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                Velit officia consequat duis enim velit mollit. Exercitation
+                veniam consequat sunt nostrud amet.
+              </p>
+            </div>
+          </div>
+          <div class="feedback-cards2">
+            <div class="feedback-image">
+              <div class="profile">
+                <img src="{% static 'image/span-2.svg' %}" alt="image" />
+              </div>
+              <div class="stars">
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star_outline.png' %}" alt="image" />
+              </div>
+            </div>
+            <h4 class="name">Ronald Richards</h4>
+            <p class="comments">
+              ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+              duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+              amet.
+            </p>
+          </div>
+          <div class="feedback-cards3">
+            <div class="feedback-image">
+              <div class="profile">
+                <img src="{% static 'image/span-3.svg' %}" alt="image" />
+              </div>
+              <div class="stars">
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star.svg' %}" alt="image" />
+                <img src="{% static 'image/star_half.png' %}" alt="image" />
+                <img src="{% static 'image/star_outline.png' %}" alt="image" />
+              </div>
+            </div>
+            <h4 class="name">Savannah Nguyen</h4>
+            <div>
+              <p class="comments">
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+              </p>
+              <p class="comments1">
+                Exercitation veniam consequat sunt nostrud amet. Amet minim
+                mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                Velit officia consequat duis enim velit mollit. Exercitation
+                veniam consequat sunt nostrud amet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}
+
+    <!-- footer -->
+
+    <section id="footer">
+      <div class="wrapper">
+        <div class="footer-top">
+          <div class="top-text">
+            <h4 class="head">Need Help</h4>
+            <h6><a class="sub-link" href="#">Contact Us</a></h6>
+            <h6><a class="sub-link" href="#">Track Order</a></h6>
+            <h6><a class="sub-link" href="#">Returns & Refunds</a></h6>
+            <h6><a class="sub-link" href="#">FAQ's</a></h6>
+            <h6><a class="sub-link" href="#">FAQ's</a></h6>
+          </div>
+          <div class="top-text">
+            <h4 class="head">Company</h4>
+            <h6><a class="sub-link" href="#">About Us</a></h6>
+            <h6><a class="sub-link" href="#">euphoria Blog</a></h6>
+            <h6><a class="sub-link" href="#">euphoriastan</a></h6>
+            <h6><a class="sub-link" href="#">Collaboration</a></h6>
+            <h6><a class="sub-link" href="#">Media</a></h6>
+          </div>
+          <div class="top-text">
+            <h4 class="head">More Info</h4>
+            <h6><a class="sub-link" href="#">Term and Conditions</a></h6>
+            <h6><a class="sub-link" href="#">Privacy Policy</a></h6>
+            <h6><a class="sub-link" href="#">Shipping Policy</a></h6>
+            <h6><a class="sub-link" href="#">Sitemap</a></h6>
+          </div>
+          <div class="top-text">
+            <h4 class="head">Location</h4>
+            <h6><a class="sub-link" href="#">support@euphoria.in</a></h6>
+            <h6>
+              <a class="sub-link" href="#"
+                >Eklingpura Chouraha, Ahmedabad Main Road</a
+              >
+            </h6>
+            <h6>
+              <a class="sub-link" href="#"
+                >(NH 8- Near Mahadev Hotel) Udaipur, India- 313002</a
+              >
+            </h6>
+            <h3 class="bottom-text">Download The App</h3>
+          </div>
+        </div>
+        <div class="footer-mid">
+          <div class="mid-content">
+            <div class="mid-logos">
+              <span class="logo-whitebg">
+                <a href="#"
+                  ><img
+                    class="facebook"
+                    src="{% static 'image/facebook.svg' %}"
+                    alt=""
+                /></a>
+              </span>
+              <span class="logo-whitebg">
+                <a href="#"
+                  ><img
+                    class="instagram"
+                    src="{% static 'image/instagram.svg' %}"
+                    alt=""
+                /></a>
+              </span>
+              <span class="logo-whitebg">
+                <a href="#"
+                  ><img
+                    class="twitter"
+                    src="{% static 'image/twitter.svg' %}"
+                    alt=""
+                /></a>
+              </span>
+              <span class="logo-whitebg">
+                <a href="#"
+                  ><img
+                    class="linkedin"
+                    src="{% static 'image/linkedin.svg' %}"
+                    alt=""
+                /></a>
+              </span>
+            </div>
+            <div class="appstore">
+              <div class="appstore-content">
+                <div class="playstore">
+                  <img src="{% static 'image/playstore.svg' %}" alt="image" />
+                </div>
+                <span>
+                  <a href="#"><h6 class="store-text1">android app on</h6></a>
+                  <a href="#"><h5 class="store-text2">Google Play</h5></a>
+                </span>
+              </div>
+              <div class="appstore-content">
+                <div class="playstore">
+                  <img src="{% static 'image/phone.svg' %}" alt="image" />
+                </div>
+                <span>
+                  <a href="#"><h6 class="store-text1">Available on the</h6></a>
+                  <a href="#"><h5 class="store-text2">App Store</h5></a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="mid-bottom-font">
+            <h3 class="popular">Popular Categories</h3>
+            <img
+              class="arrow-down"
+              src="{% static 'image/arrow-down.svg' %}"
+              alt="image"
+            />
+          </div>
+          <div class="line"></div>
+          <div class="footer-bottom">
+            <h2>
+              <a class="copy-right" href="#">
+                Copyright © 2023 Euphoria Folks Pvt Ltd. All rights reserved.
+              </a>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
+  </body>
+</html>

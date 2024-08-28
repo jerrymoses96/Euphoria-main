@@ -1,0 +1,188 @@
+{% extends 'index.html' %} {% load static %} {% block mymessage %}
+
+<!-- SINGLE PAGE SECTION  -->
+
+<section id="single-page">
+  <div class="wrapper">
+    <div class="single-page-left">
+      <div class="single-page-left-slider">
+        <div>
+          <img src="{% static 'image/img-15.jpg' %}" alt="image" />
+        </div>
+        <div>
+          <img src="{% static 'image/img-13.jpg' %}" alt="image" />
+        </div>
+        <div>
+          <img src="{% static 'image/img-12.jpg' %}" alt="image" />
+        </div>
+        <div class="arrows">
+          <img src="{% static 'image/arrow-up.png' %}" alt="image" />
+          <img src="{% static 'image/arrow down.png' %}" alt="img" />
+        </div>
+      </div>
+      <div class="single-page-left-img">
+        <img src="{{product.image.url}}" alt="image" />
+      </div>
+    </div>
+    <div class="single-page-right">
+      <div class="breadcrumps">
+        <a href="#">Shop</a>
+        <img src="{% static 'image/left-Stroke.png' %}" alt="img" />
+        <a href="#">{{product.gender}}</a>
+        <img src="{% static 'image/left-Stroke.png' %}" alt="img" />
+        <a href="#">{{product.category}}</a>
+      </div>
+      <h2>{{product.name}}</h2>
+      <div class="rating-comment">
+        <div class="rating">
+          {% for i in "12345" %} {% if product.ratings >= forloop.counter %}
+          <img src="{% static 'image/star.svg' %}" alt="Full Star" />
+          {% elif product.ratings >= forloop.counter|add:"-0.5" %}
+          <img src="{% static 'image/star_half.png' %}" alt="Half Star" />
+          {% else %}
+          <img src="{% static 'image/star_outline.png' %}" alt="Empty Star" />
+          {% endif %} {% endfor %}
+          <p>{{ product.ratings }}</p>
+        </div>
+        <div class="comments">
+          <img src="{% static 'image/comment.png' %}" alt="Comments" />
+          <p>{{ product.comment_count }}</p>
+        </div>
+      </div>
+
+      <div class="size">
+        <p>Select Size</p>
+        <p>Size Guide</p>
+        <img src="{% static 'image/arrow-right.svg' %}" alt="" />
+      </div>
+      <div class="size-select">
+        {% for size in product.sizes.all %}
+        <p>{{size.name}}</p>
+        {% endfor %}
+      </div>
+
+      <div class="color">
+        <p>Colours Available</p>
+        <div class="color-select">
+          <div class="color-1"></div>
+          <div class="color-2"></div>
+          <div class="color-3"></div>
+          <div class="color-4"></div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="add-cart">
+          <img src="{% static 'image/cart-2.png' %}" alt="" />Add To Cart
+        </button>
+        <button class="buy-now">${{product.price}}</button>
+      </div>
+      <div class="line"></div>
+      <div class="single-page-features">
+        <div>
+          <img src="{% static 'image/payment.png' %}" alt="image" />
+          <p>Secure payment</p>
+        </div>
+        <div>
+          <img src="{% static 'image/fit.png' %}" alt="image" />
+          <p>Size & Fit</p>
+        </div>
+        <div>
+          <img src="{% static 'image/shipping.png' %}" alt="image" />
+          <p>Free shipping</p>
+        </div>
+        <div>
+          <img src="{% static 'image/returns.png' %}" alt="image" />
+          <p>Free Shipping & Returns</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- product description -->
+
+<section id="product-description">
+  <div class="wrapper">
+    <div class="product-description-left">
+      <div class="product-heading">
+        <div class="line-1"></div>
+        <h3>Product Description</h3>
+      </div>
+      <div class="tab-section">
+        <div class="tab">Description</div>
+        <div class="tab">User comments <a href="#">21</a></div>
+        <div class="tab">Question & Answers <a href="#">4</a></div>
+      </div>
+      <p>
+        100% Bio-washed Cotton – makes the fabric extra soft & silky. Flexible
+        ribbed crew neck. Precisely stitched with no pilling & no fading.
+        Provide all-time comfort. Anytime, anywhere. Infinite range of
+        matte-finish HD prints.
+      </p>
+    </div>
+    <div class="product-description-right">
+      <div class="spec-item">
+        <p>Fabric</p>
+        <small>Bio-washed Cotton</small>
+      </div>
+      <div class="spec-item">
+        <p>Pattern</p>
+        <small>Printed</small>
+      </div>
+      <div class="spec-item">
+        <p>Fit</p>
+        <small>Regular-fit</small>
+      </div>
+      <div class="spec-item">
+        <p>Neck</p>
+        <small>Round Neck</small>
+      </div>
+      <div class="spec-item">
+        <p>Sleeve</p>
+        <small>Half-sleeves</small>
+      </div>
+      <div class="spec-item">
+        <p>Style</p>
+        <small>Casual Wear</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- similar products -->
+
+<section id="similar-products">
+  <div class="wrapper">
+    <div class="product-heading">
+      <div class="line-1"></div>
+      <h3>Similar Products</h3>
+    </div>
+    <div class="similar-products">
+      {% for similar_product in similar_products %}
+      <div class="product-card">
+        <a href="{% url 'web:product_detail' similar_product.id %}">
+          <img
+            src="{{similar_product.image.url}}"
+            alt="product"
+            class="product-image"
+          />
+          <img
+            class="like"
+            src="{% static 'image/Frame 49.png' %}"
+            alt="like"
+          />
+          <div class="product-details">
+            <div class="product-title">
+              <p>{{similar_product.name}}</p>
+              <small>{{similar_product.brand}}</small>
+            </div>
+            <div class="price">${{similar_product.price}}</div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
