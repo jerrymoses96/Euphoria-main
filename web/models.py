@@ -3,6 +3,15 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
+
+# class CustomUser(AbstractUser):
+#     profile_image = models.ImageField(
+#         upload_to='profile_images/', null=True, blank=True)
+
+#     def __str__(self):
+#         return self.username
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(
@@ -44,7 +53,10 @@ class Product(models.Model):
 
 
 class Wishlist(models.Model):
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL,
+    #                          on_delete=models.CASCADE,related_name="customuser")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -53,14 +65,14 @@ class Wishlist(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE,related_name="customuser")
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)  # Added quantity field
 
     class Meta:
-        # Ensure each product is unique per user
+    # Ensure each product is unique per user
         unique_together = ('user', 'product')
 
     def __str__(self):
         return f"{self.user.username}'s cart - {self.product.name} (x{self.quantity})"
-
