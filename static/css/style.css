@@ -145,6 +145,10 @@ body {
   cursor: pointer;
 }
 
+#navbar .navbar-right #accountIcon {
+  position: relative;
+}
+
 /* spotlight  */
 #wrapper {
   width: 95%;
@@ -845,7 +849,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.light-content  .image-whitespace .wishlist img {
+.light-content .image-whitespace .wishlist img {
   display: block;
   width: 100%;
 }
@@ -1728,6 +1732,70 @@ body {
   margin-bottom: 10px;
 }
 
+/* Adjust these properties based on your layout */
+.account-dropdown {
+  display: none;
+  position: absolute;
+  top: 80px; /* Adjust as needed */
+  left: 0px; /* Adjust as needed */
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #807d7e;
+}
+.account-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.account-dropdown ul li {
+  padding: 10px;
+}
+
+.account-dropdown form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-dropdown .form-group {
+  margin-bottom: 10px;
+}
+
+.account-dropdown .form-group label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: block;
+}
+
+.account-dropdown .form-group input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.account-dropdown button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.account-dropdown button:hover {
+  background-color: #0056b3;
+}
+
 #similar-products .like {
   position: absolute;
   width: 32px;
@@ -1789,6 +1857,90 @@ body {
   line-height: 16.8px;
   text-align: center;
   color: #3c4242;
+}
+
+/* profile settings  */
+
+.profile-container {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 40px auto;
+}
+
+.profile-heading {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-section {
+  margin-bottom: 30px;
+}
+
+.profile-subheading {
+  color: #555;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.count {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.product-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.product-list li {
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.update-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  width: 100%;
+}
+
+.update-btn:hover {
+  background-color: #0056b3;
 }
 
 @media (max-width: 1400px) {

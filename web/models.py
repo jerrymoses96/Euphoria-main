@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -39,3 +41,26 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name}"
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)  # Added quantity field
+
+    class Meta:
+        # Ensure each product is unique per user
+        unique_together = ('user', 'product')
+
+    def __str__(self):
+        return f"{self.user.username}'s cart - {self.product.name} (x{self.quantity})"
+

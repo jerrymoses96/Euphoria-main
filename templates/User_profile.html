@@ -1,0 +1,64 @@
+{% extends 'index.html' %} {% load static %} {% block mymessage %}
+
+
+<div class="profile-container">
+  <div class="wrapper">
+    <h2 class="profile-heading">Your Profile</h2>
+
+    <section class="profile-section">
+      <h3 class="profile-subheading">Cart</h3>
+      <p>
+        You have <span class="count">{{ cart_count }}</span> items in your cart:
+      </p>
+      <ul class="product-list">
+        {% for product_name in cart_product_names %}
+        <li>{{ product_name }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="profile-section">
+      <h3 class="profile-subheading">Wishlist</h3>
+      <p>
+        You have <span class="count">{{ wishlist_count }}</span> items in your
+        wishlist:
+      </p>
+      <ul class="product-list">
+        {% for product_name in wishlist_product_names %}
+        <li>{{ product_name }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="profile-section">
+      <h3 class="profile-subheading">Update Profile</h3>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="email">New Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value="{{ user.email }}"
+            placeholder="Enter new email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">New Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter new password"
+          />
+        </div>
+
+        <button type="submit" class="update-btn">Update Profile</button>
+      </form>
+    </section>
+  </div>
+</div>
+
+{% endblock %}

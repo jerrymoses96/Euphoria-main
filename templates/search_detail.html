@@ -28,7 +28,11 @@
         <div class="span">
           <span class="image-whitespace">
             <div class="wishlist">
-              <img src="{% static 'image/wishlist.svg' %}" alt="image" />
+              <img
+                src="{% static 'image/wishlist.svg' %}"
+                alt="image"
+                data-product-id="{{product.id}}"
+              />
             </div>
           </span>
         </div>

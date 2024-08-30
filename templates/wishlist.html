@@ -1,0 +1,35 @@
+{% extends 'index.html' %} {% load static %} {% block mymessage %}
+
+<section id="lime-light">
+  <div class="wrapper">
+    <div class="light-head">
+      <span class="rectangle"></span>
+      <h2 class="light-head-text">Wishlist</h2>
+    </div>
+    <div class="light-content">
+      {% for item in wishlist_items %}
+      <div class="light-card-content">
+        <a href="{% url 'web:product_detail' item.product.id %}">
+          <div
+            class="light-image"
+            style="background-image: url('{{item.product.image.url}}')"
+          ></div>
+          <div class="image-text-arrow">
+            <div class="image-text">
+              <h6 class="image-text1">{{item.product.name}}</h6>
+              <span
+                ><a class="explore" href="#">{{item.product.brand}}</a></span
+              >
+            </div>
+            <div class="rate">
+              <h6 class="number">${{item.product.price}}</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
