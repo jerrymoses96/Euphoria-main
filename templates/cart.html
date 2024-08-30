@@ -1,5 +1,9 @@
-{% extends 'index.html' %} {% load static %} {% block mymessage %}
+{% extends 'index.html' %}
+{% load static %}
 
+{% block mymessage %}
+
+{% if user.is_authenticated %}
 <section id="lime-light">
   <div class="wrapper">
     <div class="light-head">
@@ -27,9 +31,14 @@
           </div>
         </a>
       </div>
+      {% empty %}
+      <p>Your cart is empty.</p>
       {% endfor %}
     </div>
   </div>
 </section>
+{% else %}
+<p>Please log in to view your cart.</p>
+{% endif %}
 
 {% endblock %}

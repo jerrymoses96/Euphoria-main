@@ -1,8 +1,15 @@
 {% extends 'index.html' %} {% load static %} {% block mymessage %}
 
-
 <div class="profile-container">
   <div class="wrapper">
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     <h2 class="profile-heading">Your Profile</h2>
 
     <section class="profile-section">

@@ -1045,7 +1045,7 @@ body {
 #footer .wrapper .footer-top .top-text .head {
   font-family: sans-serif;
   font-size: 22.58px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 61.99px;
   text-align: left;
   color: #f6f6f6;
@@ -1721,6 +1721,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 #similar-products
@@ -1941,6 +1942,14 @@ body {
 
 .update-btn:hover {
   background-color: #0056b3;
+}
+
+.messages{
+  color: red;
+  font-size: 20px;
+  list-style: none;
+  text-align: center;
+  margin: 20px 0px 20px 0px;
 }
 
 @media (max-width: 1400px) {

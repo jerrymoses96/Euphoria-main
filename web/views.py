@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from web.models import Product, Category, Gender, Wishlist, Cart
@@ -5,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import random
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def index(request):
@@ -131,16 +133,17 @@ def add_to_cart(request, product_id):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
             login(request, user)
-            return redirect('web:index')
+            return JsonResponse({'success': True, 'logged_in': True, 'redirect_url': reverse('web:index')})
         else:
-            # Handle invalid login
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-    return render(request, 'login.html')
+            return JsonResponse({'success': False, 'message': 'Invalid username or password'})
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'index.html', {'form': form})
 
 
 @login_required
@@ -155,13 +158,11 @@ def profile(request):
     cart_items = Cart.objects.filter(user=request.user)
     cart_count = cart_items.count()
     cart_product_names = [item.product.name for item in cart_items]
-    print(cart_product_names, cart_count, cart_items)
 
     # Get wishlist items for the logged-in user
     wishlist_items = Wishlist.objects.filter(user=request.user)
     wishlist_count = wishlist_items.count()
     wishlist_product_names = [item.product.name for item in wishlist_items]
-    print(wishlist_product_names, wishlist_count, wishlist_items)
 
     if request.method == 'POST':
         new_email = request.POST.get('email')

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch((error) => {
           console.error("Error:", error);
-          alert("An error occurred while adding the product to the wishlist");
+          alert("login to add product to wishlist");
         });
     });
   });

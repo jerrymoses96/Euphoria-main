@@ -71,4 +71,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize progress bar
   updateSliderPosition();
+
+  // CART ICON
+  document.getElementById("cartIcon").addEventListener("click", function () {
+    alert("Login to add products to cart");
+  });
+
+  // WISHLIST ICON
+  document
+    .getElementById("wishlistIcon")
+    .addEventListener("click", function () {
+      alert("Login to add products to wishlist");
+    });
+
+  // login error alerts
+  document
+    .getElementById("loginForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      var form = event.target;
+      var formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": "{{ csrf_token }}",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            if (data.logged_in) {
+              alert("You are now logged in!");
+            }
+            window.location.href = data.redirect_url;
+          } else {
+            // Show an alert with the error message
+            alert(data.message);
+            // Optionally, also display the error in the loginErrors div
+            document.getElementById("loginErrors").innerText = data.message;
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
 });
