@@ -31,6 +31,6 @@ admin.site.register(Gender)
 
 admin.site.register(Size)
 
-admin.site.register(Wishlist)
+admin.site.register(Wishlist, WishlistAdmin)
 
-admin.site.register(Cart)
+admin.site.register(Cart, CartAdmin)
