@@ -25,7 +25,5 @@ rightArrow.addEventListener("click", () => {
 
 function updateSlider() {
   const width = arrivalCards.querySelector(".arrival-card-content").clientWidth;
-  arrivalCards.style.transform = `translateX(-${
-    currentIndex * (width + 24)
-  }px)`;
+  arrivalCards.style.transform = `translateX(-${currentIndex * width}px)`;
 }

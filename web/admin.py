@@ -4,6 +4,8 @@ from web.models import Product, Category, Gender, Size, Wishlist, Cart
 # Register your models here.
 
 
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'image']
 
