@@ -44,105 +44,160 @@
     <!-- neavbar section  -->
 
     <section id="navbar">
-      <div class="header">
-        <h1>
-          <a href="{% url 'web:index' %}"
-            ><img src="{% static 'image/Logo.svg' %}" alt="image"
-          /></a>
-        </h1>
-      </div>
-      <ul class="nav-menu">
-        <li><a class="navmenu-text" href="#">Shop</a></li>
-        <li><a class="navmenu-text" href="#">Men</a></li>
-        <li><a class="navmenu-text" href="#">Women</a></li>
-        <li class="combos"><a class="navmenu-text" href="#">Combos</a></li>
-        <li><a class="navmenu-text" href="#">Joggers</a></li>
-      </ul>
-      <div class="search-bar">
-        <img src="{% static 'image/search.svg' %}" alt="image" />
-        <form action="{% url 'web:search_products' %}" method="get">
-          <input
-            class="input"
-            type="text"
-            name="q"
-            placeholder="search"
-            value="{{ request.GET.q }}"
-          />
-        </form>
-      </div>
-      <div class="navbar-right">
-        {% if user.is_authenticated %}
-        <a href="{% url 'web:wishlist' %}">
-          <span
-            ><img src="{% static 'image/wishlist.svg' %}" alt="image"
-          /></span>
-        </a>
-        {% else %}
-        <span id="wishlistIcon"
-          ><img src="{% static 'image/wishlist.svg' %}" alt="image"
-        /></span>
-        {% endif %}
-        <span id="accountIcon">
-          <!-- Account Dropdown Menu -->
-          <div class="account-dropdown" id="accountDropdown">
-            {% if user.is_authenticated %}
-            <ul>
-              <li><a href="{% url 'web:profile' %}">Profile</a></li>
-              <li><a href="{% url 'web:logout' %}">Logout</a></li>
-            </ul>
-            {% else %}
-            <form action="{% url 'web:login' %}" method="post" id="loginForm">
-              {% csrf_token %}
-              <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required />
-              </div>
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required />
-              </div>
-              <button type="submit">Login</button>
-              <div id="loginErrors" style="color: red"></div>
-            </form>
-            {% endif %}
-          </div>
-          {% if user.is_authenticated and user.profile_image %}
-          <img src="{{ user.profile_image.url }}" alt="Profile Image" />
-          {% else %}
-          <img src="{% static 'image/account.svg' %}" alt="Account" />
-          {% endif %}
-        </span>
-        <span>
+      <div class="wrapper">
+        <div class="header">
+          <h1>
+            <a href="{% url 'web:index' %}"
+              ><img src="{% static 'image/Logo.svg' %}" alt="image"
+            /></a>
+          </h1>
+        </div>
+        <ul class="nav-menu">
+          <li><a class="navmenu-text" href="#">Shop</a></li>
+          <li><a class="navmenu-text" href="#">Men</a></li>
+          <li><a class="navmenu-text" href="#">Women</a></li>
+          <li class="combos"><a class="navmenu-text" href="#">Combos</a></li>
+          <li><a class="navmenu-text" href="#">Joggers</a></li>
+        </ul>
+        <div class="search-bar">
+          <img src="{% static 'image/search.svg' %}" alt="image" />
+          <form action="{% url 'web:search_products' %}" method="get">
+            <input
+              class="input"
+              type="text"
+              name="q"
+              placeholder="search"
+              value="{{ request.GET.q }}"
+            />
+          </form>
+        </div>
+        <div class="navbar-right">
           {% if user.is_authenticated %}
-          <a href="{% url 'web:cart' %}">
-            <img src="{% static 'image/cart.svg' %}" alt="image" />
+          <a href="{% url 'web:wishlist' %}">
+            <span
+              ><img src="{% static 'image/wishlist.svg' %}" alt="image"
+            /></span>
           </a>
           {% else %}
-          <img id="cartIcon" src="{% static 'image/cart.svg' %}" alt="image" />
+          <span id="wishlistIcon"
+            ><img src="{% static 'image/wishlist.svg' %}" alt="image"
+          /></span>
           {% endif %}
-        </span>
-      </div>
+          <span id="accountIcon">
+            <!-- Account Dropdown Menu -->
+            <div class="account-dropdown" id="accountDropdown">
+              {% if user.is_authenticated %}
+              <ul>
+                <li><a href="{% url 'web:profile' %}">Profile</a></li>
+                <li><a href="{% url 'web:logout' %}">Logout</a></li>
+              </ul>
+              {% else %}
+              <form action="{% url 'web:login' %}" method="post" id="loginForm">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" name="username" required />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <button type="submit">Login</button>
+                <div id="loginErrors" style="color: red"></div>
+              </form>
+              {% endif %}
+            </div>
+            {% if user.is_authenticated and user.profile_image %}
+            <img src="{{ user.profile_image.url }}" alt="Profile Image" />
+            {% else %}
+            <img src="{% static 'image/account.svg' %}" alt="Account" />
+            {% endif %}
+          </span>
+          <span>
+            {% if user.is_authenticated %}
+            <a href="{% url 'web:cart' %}">
+              <img src="{% static 'image/cart.svg' %}" alt="image" />
+            </a>
+            {% else %}
+            <img
+              id="cartIcon"
+              src="{% static 'image/cart.svg' %}"
+              alt="image"
+            />
+            {% endif %}
+          </span>
+        </div>
 
-      <div class="menubar" id="menubar">
-        <span class="shade-menubar"
-          ><img src="{% static 'image/svgexport-24.svg' %}" alt="image"
-        /></span>
+        <div class="menubar" id="menubar">
+          <span class="shade-menubar"
+            ><img src="{% static 'image/svgexport-24.svg' %}" alt="image"
+          /></span>
+        </div>
+        <ul class="dropdown" id="dropdownMenu">
+          <li>
+            <img
+              class="close-icon"
+              id="closeIcon"
+              src="{% static 'image/svgexport-3.svg' %}"
+              alt="close icon"
+            />
+          </li>
+          <li class="drop-text">Shop</li>
+          <li><a class="drop-text" href="#">Men</a></li>
+          <li><a class="drop-text" href="#">Women</a></li>
+          <li><a class="drop-text" href="#">Combos</a></li>
+          <li><a class="drop-text" href="#">Joggers</a></li>
+         
+          <span>
+            {% if user.is_authenticated %}
+            <a class="drop-text" href="{% url 'web:cart' %}">
+              Cart
+            </a>
+            {% else %}
+            <a class="drop-text" href="">Cart</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <a class="drop-text" href="{% url 'web:wishlist' %}">
+              <span>
+               Wishlist
+              </span>
+            </a>
+            {% else %}
+            <span class="drop-text" id="wishlistIcon"
+              >Wishlist</span>
+            {% endif %}
+            {% if user.is_authenticated %}
+              <ul>
+                <li><a href="{% url 'web:profile' %}">Profile</a></li>
+                <li><a href="{% url 'web:logout' %}">Logout</a></li>
+              </ul>
+              {% else %}
+              <form action="{% url 'web:login' %}" method="post" id="loginForm">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" name="username" required />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <button type="submit">Login</button>
+                <div id="loginErrors" style="color: red"></div>
+              </form>
+              {% endif %}
+        </ul>
       </div>
-      <ul class="dropdown" id="dropdownMenu">
-        <li>
-          <img
-            class="close-icon"
-            id="closeIcon"
-            src="{% static 'image/svgexport-3.svg' %}"
-            alt="close icon"
-          />
-        </li>
-        <li class="drop-text">Shop</li>
-        <li><a class="drop-text" href="#">Men</a></li>
-        <li><a class="drop-text" href="#">Women</a></li>
-        <li><a class="drop-text" href="#">Combos</a></li>
-        <li><a class="drop-text" href="#">Joggers</a></li>
-      </ul>
     </section>
 
     {% block mymessage %}

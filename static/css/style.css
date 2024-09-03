@@ -19,13 +19,23 @@ body {
 }
 
 #navbar {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* position: relative; */
+  /* gap: 50px; */
+  background-color: #fdfdfd;
+  /* padding: 31px 102px; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#navbar .wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  gap: 50px;
+  /* gap: 50px; */
   background-color: #fdfdfd;
-  padding: 31px 102px;
+  padding: 31px 0px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 #navbar .nav-menu {
@@ -73,6 +83,13 @@ body {
   font-size: 24px;
   font-weight: 400;
   cursor: pointer;
+}
+#navbar .dropdown span .drop-text:first-child {
+  margin-bottom: 10px;
+}
+#navbar .dropdown span {
+  display: flex;
+  flex-direction: column;
 }
 #navbar .dropdown .close-icon {
   filter: invert(100%);
@@ -134,7 +151,7 @@ body {
 #navbar .navbar-right {
   display: flex;
   gap: 10px;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 #navbar .navbar-right span {
   display: flex;
@@ -1762,8 +1779,9 @@ body {
 .account-dropdown {
   display: none;
   position: absolute;
-  top: 80px; /* Adjust as needed */
-  left: 0px; /* Adjust as needed */
+  top: 60px; /* Adjust as needed */
+
+  right: 0px;
   background: white;
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -1782,6 +1800,16 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+#navbar #dropdownMenu span a img {
+  width: 25px;
+  height: 25px;
+}
+#navbar #dropdownMenu span ul li a {
+  color: white;
+}
+#navbar #dropdownMenu span ul li:first-child {
+  margin: 10px 0 10px 0;
 }
 .account-dropdown ul li {
   padding: 10px;
@@ -1995,16 +2023,6 @@ body {
     gap: 50px;
   }
 
-  #navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    background-color: #fdfdfd;
-    padding: 31px 102px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-  }
   #navbar .search-bar {
     display: flex;
     padding: 10px 10px;
@@ -2034,8 +2052,21 @@ body {
     padding-top: 30px;
     gap: 38.58px;
   }
+  #productoffer .offercards .offercard-left {
+    width: 100%;
+  }
+  #productoffer .offercards .offercard-right {
+    width: 100%;
+  }
 }
 @media (max-width: 1280px) {
+  #navbar .search-bar .input {
+    background-color: #f6f6f6;
+    display: flex;
+    font-size: 15px;
+    border: none;
+    align-items: center;
+  }
   #product-description .wrapper .product-description-right {
     width: 100%;
     height: 150px;
@@ -2048,21 +2079,7 @@ body {
     gap: 40px;
   }
 
-  #navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-    background-color: #fdfdfd;
-    padding: 21px 102px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-  }
-  #productoffer .offercards .offercard-right {
-    width: 504.93px;
-    height: 356.2px;
-    border-radius: 12px;
-  }
+  
   #navbar .nav-menu {
     display: flex;
     list-style: none;
@@ -2070,10 +2087,7 @@ body {
     padding-right: 10px;
   }
 
-  #productoffer .offercards .offercard-left {
-    width: 504.93px;
-    height: 356.2px;
-  }
+  
   #spotlight .spotlight-text .spot-offer-text {
     display: flex;
     justify-content: space-between;
@@ -2235,15 +2249,7 @@ body {
     font-size: 60px;
     font-weight: 400;
   }
-  #productoffer .offercards .offercard-right {
-    width: 354.93px;
-    height: 356.2px;
-    border-radius: 12px;
-  }
-  #productoffer .offercards .offercard-left {
-    width: 354.93px;
-    height: 356.2px;
-  }
+ 
   #spotlight .spotlight-text .spotproduct-name {
     display: flex;
     gap: 10px;
@@ -2392,6 +2398,36 @@ body {
     display: flex;
     justify-content: space-between;
   }
+  #navbar .dropdown .drop-text {
+    padding-top: 0px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .form-group label {
+    margin-top: 10px;
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .form-group #username {
+    width: 50%;
+    border-radius: 6px;
+  }
+  .form-group #password {
+    width: 50%;
+    padding: 0;
+  }
+  form button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  #dropdownMenu.show {
+    overflow: scroll;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2484,7 +2520,7 @@ body {
     border-bottom-right-radius: 12px;
   }
   #navbar .navbar-right span {
-    display: none;
+    /* display: none; */
     align-items: center;
     background-color: #f6f6f6;
     padding: 15px 15px;
@@ -2517,15 +2553,7 @@ body {
     display: flex;
     justify-content: space-between;
   }
-  #productoffer .offercards .offercard-right {
-    width: 254.93px;
-    height: 306.2px;
-    border-radius: 12px;
-  }
-  #productoffer .offercards .offercard-left {
-    width: 254.93px;
-    height: 306.2px;
-  }
+
   .offercard-right .rightcard-text .mid-textright {
     font-size: 24px;
     font-weight: 400;
@@ -2639,6 +2667,9 @@ body {
     font-weight: 400;
     padding-top: 6px;
   }
+  #navbar .navbar-right span {
+    display: none;
+  }
 }
 @media (max-width: 540px) {
   #spotlight .spotlight-slider .spotlight-card .spotlight-text {
@@ -2715,16 +2746,7 @@ body {
   #navbar .menubar {
     display: flex;
   }
-  #navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-    background-color: #fdfdfd;
-    padding: 21px 50px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-  }
+
   #products {
     padding-bottom: 30px;
   }
@@ -3016,16 +3038,7 @@ body {
     letter-spacing: 0.31px;
     padding: 25px 0px 45px 0px;
   }
-  #navbar .search-bar .input {
-    display: none;
-    font-size: 10px;
-    border: none;
-    align-items: center;
-  }
 
-  #navbar .search-bar {
-    display: none;
-  }
   #brands .brand-card .brandcard-content .brand-subtext {
     display: none;
   }
@@ -3076,6 +3089,16 @@ body {
 @media (max-width: 420px) {
   .wrapper .advertisement-img1 .advertisement-card-subhead {
     padding-top: 80px;
+  }
+  #navbar .search-bar .input {
+    display: none;
+    font-size: 10px;
+    border: none;
+    align-items: center;
+  }
+
+  #navbar .search-bar {
+    display: none;
   }
 }
 @media (max-width: 360px) {
