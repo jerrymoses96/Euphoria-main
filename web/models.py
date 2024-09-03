@@ -54,8 +54,8 @@ class Product(models.Model):
 
 class Wishlist(models.Model):
     # user = models.ForeignKey(settings.AUTH_USER_MODEL,
-    #                          on_delete=models.CASCADE,related_name="customuser")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+                            #  on_delete=models.CASCADE,related_name="customuser")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="User")
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
@@ -65,13 +65,13 @@ class Wishlist(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE,related_name="customuser")
+                             on_delete=models.CASCADE, related_name="customuser")
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)  # Added quantity field
 
     class Meta:
-    # Ensure each product is unique per user
+        # Ensure each product is unique per user
         unique_together = ('user', 'product')
 
     def __str__(self):
