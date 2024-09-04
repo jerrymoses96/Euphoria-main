@@ -85,7 +85,7 @@ body {
   cursor: pointer;
 }
 #navbar .dropdown span .drop-text:first-child {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 #navbar .dropdown span {
   display: flex;
@@ -167,6 +167,7 @@ body {
 }
 
 /* spotlight  */
+
 #wrapper {
   width: 95%;
   max-width: 1490px;
@@ -202,9 +203,6 @@ body {
   background: none;
   border: none;
   z-index: 10;
-}
-
-#spotlight .spotlight-slider button img {
 }
 
 #spotlight .spotlight-slider .spotlight-card {
@@ -756,6 +754,7 @@ body {
   display: flex;
   gap: 20px;
   padding-bottom: 18px;
+  align-items: center;
 }
 #lime-light .wrapper .light-head .rectangle {
   height: 30px;
@@ -770,7 +769,7 @@ body {
   letter-spacing: 2%;
   line-height: 33.5px;
   color: #3c4242;
-  width: 394px;
+  /* width: 394px; */
 }
 #lime-light .wrapper .light-content {
   display: flex;
@@ -1309,9 +1308,6 @@ body {
   color: #807d7e;
 }
 
-#single-page .wrapper .single-page-right .breadcrumps img {
-}
-
 #single-page .wrapper .single-page-right h2 {
   font-size: 34px;
   font-weight: 600;
@@ -1330,9 +1326,6 @@ body {
   margin-right: 10px;
 }
 
-#single-page .wrapper .single-page-right div .rating img {
-}
-
 #single-page .wrapper .single-page-right div .rating p {
   font-size: 18px;
   font-weight: 500;
@@ -1340,12 +1333,6 @@ body {
   text-align: left;
 
   color: #807d7e;
-}
-
-#single-page .wrapper .single-page-right div .comments {
-}
-
-#single-page .wrapper .single-page-right div .comments img {
 }
 
 #single-page .wrapper .single-page-right div .comments p {
@@ -1455,9 +1442,6 @@ body {
   background-color: #9c1f35;
 }
 
-#single-page .wrapper .single-page-right .buttons {
-}
-
 #single-page .wrapper .single-page-right .buttons .add-cart {
   padding: 12px 40px 12px 40px;
   gap: 12px;
@@ -1475,9 +1459,6 @@ body {
   justify-content: center;
   cursor: pointer;
   gap: 12px;
-}
-
-#single-page .wrapper .single-page-right .buttons .add-cart img {
 }
 
 #single-page .wrapper .single-page-right .buttons .buy-now {
@@ -1532,9 +1513,6 @@ body {
 }
 
 /* product description  */
-
-#product-description {
-}
 
 #product-description .wrapper {
   display: flex;
@@ -2385,10 +2363,10 @@ body {
     padding-top: 50px;
     padding-bottom: 50px;
   }
-  #dropdownMenu ul li a{
+  #dropdownMenu ul li a {
     color: white;
   }
-  #dropdownMenu ul li a:first-child{
+  #dropdownMenu ul li:first-child {
     margin-bottom: 10px;
   }
 }
@@ -2540,24 +2518,6 @@ body {
     display: block;
   }
 
-  /* #navbar .dropdown:hover   {
-        color: #070404;
-        font-size: 24px;
-        font-weight: 400;
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        display: none;
-        
-    } */
-  /* #navbar .menubar span img{
-        width: 100%;
-        display: block;
-    }
-    #navbar .menubar:hover + .dropdown {
-        display: flex;
-        flex-direction: column;
-    } */
   #navbar .menubar {
     display: flex;
     justify-content: space-between;

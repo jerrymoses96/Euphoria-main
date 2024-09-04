@@ -4,12 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
 
-# class CustomUser(AbstractUser):
-#     profile_image = models.ImageField(
-#         upload_to='profile_images/', null=True, blank=True)
 
-#     def __str__(self):
-#         return self.username
 
 
 class Category(models.Model):
@@ -53,8 +48,7 @@ class Product(models.Model):
 
 
 class Wishlist(models.Model):
-    # user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                            #  on_delete=models.CASCADE,related_name="customuser")
+
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="User")
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -66,7 +60,7 @@ class Wishlist(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, related_name="customuser")
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+   
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)  # Added quantity field
 
