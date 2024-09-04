@@ -8,7 +8,7 @@
       <h2 class="light-head-text">Result for "{{query}}"</h2>
     </div>
     <div class="light-content">
-      {% for product in products %}
+      {% if products %} {% for product in products %}
       <div class="light-card-content">
         <a href="{% url 'web:product_detail' product.id %}">
           <div
@@ -37,7 +37,17 @@
           </span>
         </div>
       </div>
-      {% endfor %}
+      {% endfor %} {% else %}
+
+      <div class="no-results">
+        <p class="no-results-text">No products found for "{{ query }}".</p>
+        <p class="no-results-suggestion">
+          Try adjusting your search terms or browse through other categories.
+        </p>
+        <a href="{% url 'web:index' %}" class="back-to-home">Back to Home</a>
+      </div>
+
+      {% endif %}
     </div>
   </div>
 </section>

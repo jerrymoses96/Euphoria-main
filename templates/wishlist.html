@@ -7,7 +7,7 @@
       <h2 class="light-head-text">Wishlist</h2>
     </div>
     <div class="light-content">
-      {% for item in wishlist_items %}
+      {% if wishlist_items %} {% for item in wishlist_items %}
       <div class="light-card-content">
         <a href="{% url 'web:product_detail' item.product.id %}">
           <div
@@ -27,7 +27,16 @@
           </div>
         </a>
       </div>
-      {% endfor %}
+      {% endfor %} {% else %}
+      <div class="no-results">
+      
+        <p class="no-results-text">Your wishlist is currently empty.</p>
+        <p class="no-results-suggestion">
+          Browse our catalog and add items to your wishlist.
+        </p>
+        <a href="{% url 'web:index' %}" class="back-to-home">Start Shopping</a>
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
